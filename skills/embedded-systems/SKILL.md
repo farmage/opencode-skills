@@ -2,6 +2,7 @@
 name: embedded-systems
 description: Use when developing firmware for microcontrollers, implementing RTOS applications, or optimizing power consumption. Invoke for STM32, ESP32, FreeRTOS, bare-metal, power optimization, real-time systems, configure peripherals, write interrupt handlers, implement DMA transfers, debug timing issues.
 license: MIT
+compatibility: opencode
 metadata:
   author: https://github.com/Jeffallan
   version: "1.1.0"
@@ -10,7 +11,7 @@ metadata:
   role: specialist
   scope: implementation
   output-format: code
-  related-skills: 
+  related-skills: cpp-pro
 ---
 
 # Embedded Systems Engineer

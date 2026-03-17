@@ -40,8 +40,7 @@ COMMANDS_DIR = "commands/project"
 
 # Files to update and their patterns
 FILES_TO_UPDATE = {
-    ".claude-plugin/plugin.json": "json",
-    ".claude-plugin/marketplace.json": "json",
+    "opencode.json": "json",
     "README.md": "markdown",
     "QUICKSTART.md": "markdown",
     "ROADMAP.md": "markdown",

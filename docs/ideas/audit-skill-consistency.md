@@ -3,7 +3,7 @@
 > Audit date: 2026-02-02
 > Audited by: Claude Opus 4.5
 > Sample size: 10 skills out of 65 total
-> Reference standard: CLAUDE.md project instructions (Skill Authorship Standards)
+> Reference standard: AGENTS.md project instructions (Skill Authorship Standards)
 
 ---
 
@@ -69,7 +69,7 @@ The most significant cross-cutting issue. Multiple skills reference Related Skil
 
 ### 2.2 All Skills Fall Below Target Line Count
 
-CLAUDE.md specifies Tier 1 SKILL.md files should be "~80-100 lines." Every sampled skill falls below the target range:
+AGENTS.md specifies Tier 1 SKILL.md files should be "~80-100 lines." Every sampled skill falls below the target range:
 
 | Skill | Lines (non-blank) | Total Lines |
 |---|---|---|
@@ -88,7 +88,7 @@ When blank lines are included, most files are close to the lower end of the 80-1
 
 ### 2.3 Core Workflow Step Count Inconsistency
 
-CLAUDE.md specifies "Core workflow (5 high-level steps)." Two sampled skills use 6 steps:
+AGENTS.md specifies "Core workflow (5 high-level steps)." Two sampled skills use 6 steps:
 
 - **debugging-wizard**: 6 steps (Reproduce, Isolate, Hypothesize, Test, Fix, Prevent)
 - **security-reviewer**: 6 steps (Scope, Automated scan, Manual review, Active testing, Categorize, Report)
@@ -97,7 +97,7 @@ Both 6-step workflows are domain-justified and arguably better for it. This sugg
 
 ### 2.4 Frontmatter Enum Drift
 
-The CLAUDE.md documents these enums:
+The AGENTS.md documents these enums:
 - `scope`: `implementation | review | design | system-design`
 - `output-format`: `code | document | report | architecture`
 
@@ -117,15 +117,15 @@ The CLAUDE.md documents these enums:
 | `output-format` | `analysis-and-code` | database-optimizer |
 | `output-format` | `code+analysis` | legacy-modernizer |
 
-These are all reasonable values. The issue is that CLAUDE.md's enum list is incomplete, not that the skills are wrong. The documented enums need to be expanded, or a note added that custom values are permitted.
+These are all reasonable values. The issue is that AGENTS.md's enum list is incomplete, not that the skills are wrong. The documented enums need to be expanded, or a note added that custom values are permitted.
 
 ### 2.5 Non-Standard Frontmatter Fields
 
-Two fields appear in some skills but are not documented in CLAUDE.md's Frontmatter Requirements:
+Two fields appear in some skills but are not documented in AGENTS.md's Frontmatter Requirements:
 
 - `allowed-tools`: Used by `code-reviewer`, `spec-miner`, `security-reviewer` (3 skills)
 
-This field is meaningful (restricts which tools the skill can use) but is undocumented. It should either be added to the frontmatter spec or removed from the skills.
+This field is meaningful (restricts which tools the skill can use) but is undocumented. It should either be added to the frontmatter spec in AGENTS.md or removed from the skills.
 
 ### 2.6 "When to Use" Format Inconsistency
 
@@ -162,7 +162,7 @@ These are invisible in rendered markdown but would appear in raw source. For a d
 
 ## 3. Section Order Analysis
 
-The expected section order (derived from CLAUDE.md's Progressive Disclosure Architecture and the majority pattern) is:
+The expected section order (derived from AGENTS.md's Progressive Disclosure Architecture and the majority pattern) is:
 
 ```
 1. YAML Frontmatter
@@ -350,7 +350,7 @@ Comma-separated list of technologies, standards, and tools.
    - (b) Build a display-name-to-slug mapping table
    - (c) Add a `display-name` field to frontmatter so the mapping is self-contained
 
-3. **Expand the documented frontmatter enums** in CLAUDE.md to match actual usage. Add `analysis`, `testing`, `infrastructure`, `optimization`, `architecture` to `scope`. Add `analysis`, `manifests`, `specification`, `schema` to `output-format`.
+3. **Expand the documented frontmatter enums** in AGENTS.md to match actual usage. Add `analysis`, `testing`, `infrastructure`, `optimization`, `architecture` to `scope`. Add `analysis`, `manifests`, `specification`, `schema` to `output-format`.
 
 ### High (Should fix for quality)
 
@@ -358,9 +358,9 @@ Comma-separated list of technologies, standards, and tools.
 
 5. **Standardize the "Output Templates" section** to always use numbered lists, not inline prose. Fix security-reviewer.
 
-6. **Enforce the 5-step Core Workflow rule** or explicitly amend CLAUDE.md to allow 5-6 steps. Two skills (debugging-wizard, security-reviewer) have 6 steps that are domain-justified.
+6. **Enforce the 5-step Core Workflow rule** or explicitly amend AGENTS.md to allow 5-6 steps. Two skills (debugging-wizard, security-reviewer) have 6 steps that are domain-justified.
 
-7. **Document the `allowed-tools` frontmatter field** in CLAUDE.md, or decide it belongs in a separate mechanism.
+7. **Document the `allowed-tools` frontmatter field** in AGENTS.md, or decide it belongs in a separate mechanism.
 
 8. **Remove or relocate non-standard sections** (feature-forge's "Pre-Discovery with Subagents") into a reference file to maintain the standard section order.
 

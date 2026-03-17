@@ -20,8 +20,8 @@ Claude often operates on assumptions about project context, technology choices, 
 
 | Name | Type | Path | Description |
 |------|------|------|-------------|
-| `ground-file` | file | `~/.claude/common-ground/{project-id}/COMMON-GROUND.md` | Human-readable assumptions organized by confidence tier |
-| `ground-index` | file | `~/.claude/common-ground/{project-id}/ground.index.json` | Machine-readable assumption index |
+| `ground-file` | file | `~/.config/opencode/common-ground/{project-id}/COMMON-GROUND.md` | Human-readable assumptions organized by confidence tier |
+| `ground-index` | file | `~/.config/opencode/common-ground/{project-id}/ground.index.json` | Machine-readable assumption index |
 
 ## Prerequisites
 

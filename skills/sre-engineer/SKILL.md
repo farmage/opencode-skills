@@ -2,6 +2,7 @@
 name: sre-engineer
 description: Defines service level objectives, creates error budget policies, designs incident response procedures, develops capacity models, and produces monitoring configurations and automation scripts for production systems. Use when defining SLIs/SLOs, managing error budgets, building reliable systems at scale, incident management, chaos engineering, toil reduction, or capacity planning.
 license: MIT
+compatibility: opencode
 metadata:
   author: https://github.com/Jeffallan
   version: "1.1.0"
@@ -10,7 +11,7 @@ metadata:
   role: specialist
   scope: implementation
   output-format: code
-  related-skills: devops-engineer, cloud-architect, kubernetes-specialist
+  related-skills: chaos-engineer, cloud-architect, devops-engineer, kubernetes-specialist, postgres-pro
 ---
 
 # SRE Engineer

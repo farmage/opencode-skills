@@ -28,8 +28,8 @@ Before setting up the Atlassian MCP server, ensure you have:
    - For Cloud: Account with access to your organization's Jira and Confluence
    - For Server/Data Center: Administrative access to generate personal access tokens
 
-3. **Claude Code CLI installed**
-   - The MCP server integrates with Claude Code for AI-assisted workflows
+3. **OpenCode CLI installed**
+   - The MCP server integrates with OpenCode for AI-assisted workflows
 
 ---
 
@@ -90,7 +90,7 @@ For self-hosted Atlassian products, use Personal Access Tokens (PATs).
 
 ### Step 1: Create Environment File
 
-Create a `.env.local` file in your project root (or the directory where you will run Claude Code):
+Create a `.env.local` file in your project root (or the directory where you will run OpenCode):
 
 ```bash
 touch .env.local
@@ -245,9 +245,9 @@ Verify the container can start and read your environment:
 docker run --rm --env-file .env.local ghcr.io/sooperset/mcp-atlassian:latest --help
 ```
 
-### Step 2: Test with Claude Code
+### Step 2: Test with OpenCode
 
-Start Claude Code and verify the MCP server is recognized:
+Start OpenCode and verify the MCP server is recognized:
 
 ```bash
 claude
@@ -337,7 +337,7 @@ docker images | grep mcp-atlassian
 **Issue: Environment file not found**
 
 Ensure the path in `.mcp.json` is correct:
-- Use relative path from where Claude Code runs
+- Use relative path from where OpenCode runs
 - Or use absolute path: `/Users/yourname/project/.env.local`
 
 ### Debug Mode
@@ -458,7 +458,7 @@ If you suspect a token has been compromised:
 - [ ] `.env.local` added to `.gitignore`
 - [ ] `.mcp.json` created with Atlassian configuration
 - [ ] Docker image pulled: `docker pull ghcr.io/sooperset/mcp-atlassian:latest`
-- [ ] Connection tested with Claude Code
+- [ ] Connection tested with OpenCode
 
 ---
 

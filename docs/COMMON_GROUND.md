@@ -176,7 +176,7 @@ Every assumption has a **type** that records its origin. Types are immutable—t
 Assumptions are stored in a **grounding file** at:
 
 ```
-~/.claude/common-ground/{project-id}/COMMON-GROUND.md
+~/.config/opencode/common-ground/{project-id}/COMMON-GROUND.md
 ```
 
 ### Project Identification
@@ -429,7 +429,7 @@ Check git remote configuration. For non-git projects, the absolute path is used.
 
 | File | Purpose |
 |------|---------|
-| `~/.claude/common-ground/{project}/COMMON-GROUND.md` | Human-readable assumptions |
-| `~/.claude/common-ground/{project}/ground.index.json` | Machine-readable index |
+| `~/.config/opencode/common-ground/{project}/COMMON-GROUND.md` | Human-readable assumptions |
+| `~/.config/opencode/common-ground/{project}/ground.index.json` | Machine-readable index |
 | `commands/common-ground/COMMAND.md` | Command implementation |
 | `commands/common-ground/references/` | Deep-dive reference files |

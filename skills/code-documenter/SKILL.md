@@ -2,6 +2,7 @@
 name: code-documenter
 description: Generates, formats, and validates technical documentation — including docstrings, OpenAPI/Swagger specs, JSDoc annotations, doc portals, and user guides. Use when adding docstrings to functions or classes, creating API documentation, building documentation sites, or writing tutorials and user guides. Invoke for OpenAPI/Swagger specs, JSDoc, doc portals, getting started guides.
 license: MIT
+compatibility: opencode
 metadata:
   author: https://github.com/Jeffallan
   version: "1.1.0"
@@ -19,7 +20,10 @@ Documentation specialist for inline documentation, API specs, documentation site
 
 ## When to Use This Skill
 
-Applies to any task involving code documentation, API specs, or developer-facing guides. See the reference table below for specific sub-topics.
+- Generating or updating code documentation (JSDoc, docstrings, XML docs)
+- Creating or maintaining API specifications (OpenAPI, AsyncAPI)
+- Writing developer-facing guides, READMEs, or onboarding docs
+- Documenting architecture decisions (ADRs) or module overviews
 
 ## Core Workflow
 

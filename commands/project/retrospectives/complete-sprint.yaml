@@ -1,0 +1,18 @@
+command: "retrospectives:complete-sprint"
+phase: retrospective
+path: commands/project/retrospectives/complete-sprint.md
+description: docs/workflow/retrospective-phase.md
+inputs:
+  - name: sprint-folder
+    type: string
+    required: false
+    description: Confluence folder path containing sprint epic documents
+outputs:
+  - name: sprint-retrospective
+    type: report
+    description: Comprehensive sprint retrospective with engineering excellence, QA, security, product, DevOps, and process analysis
+requires:
+  - documentation
+status: existing
+argument-hint: "[sprint-folder]"
+repeat: false

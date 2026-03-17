@@ -10,7 +10,7 @@ Guidelines for contributing to this project.
 - Provide detailed information:
   - Steps to reproduce (for bugs)
   - Expected vs actual behavior
-  - Claude Code version
+  - OpenCode version
   - Relevant error messages or logs
 
 ### Suggesting New Skills
@@ -28,8 +28,8 @@ To add a new agent that implements the Agent Skills specification, see the [Supp
 #### 1. Fork and Clone
 ```bash
 # Fork on GitHub, then:
-git clone https://github.com/jeffallan/claude-skills.git
-cd claude-skills
+git clone https://github.com/jeffallan/opencode-skills.git
+cd opencode-skills
 ```
 
 #### 2. Create a Branch
@@ -52,9 +52,9 @@ mkdir -p skills/my-new-skill
 #### 4. Test Your Changes
 ```bash
 # Copy skills to test location
-cp -r skills/* ~/.claude/skills/
+cp -r skills/* ~/.config/opencode/skills/
 
-# Restart Claude Code and test
+# Restart OpenCode and test
 # Verify your skill activates correctly
 # Test all examples in the SKILL.md
 ```
@@ -321,14 +321,14 @@ Instances of abusive, harassing, or otherwise unacceptable behavior may be repor
 
 ## Questions
 
-- Open a [GitHub Discussion](https://github.com/jeffallan/claude-skills/discussions)
+- Open a [GitHub Discussion](https://github.com/jeffallan/opencode-skills/discussions)
 - Comment on relevant issues
 - Reach out to maintainers
 
 ## Recognition
 
 Contributors will be recognized in:
-- [GitHub contributors page](https://github.com/Jeffallan/claude-skills/graphs/contributors)
+- [GitHub contributors page](https://github.com/Jeffallan/opencode-skills/graphs/contributors)
 - Release notes for significant contributions
 
 

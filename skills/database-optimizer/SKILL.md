@@ -2,6 +2,7 @@
 name: database-optimizer
 description: Optimizes database queries and improves performance across PostgreSQL and MySQL systems. Use when investigating slow queries, analyzing execution plans, or optimizing database performance. Invoke for index design, query rewrites, configuration tuning, partitioning strategies, lock contention resolution.
 license: MIT
+compatibility: opencode
 metadata:
   author: https://github.com/Jeffallan
   version: "1.1.0"
@@ -10,7 +11,7 @@ metadata:
   role: specialist
   scope: optimization
   output-format: analysis-and-code
-  related-skills: devops-engineer
+  related-skills: csharp-developer, devops-engineer, graphql-architect, java-architect, postgres-pro, rag-architect, rails-expert, spring-boot-engineer
 ---
 
 # Database Optimizer

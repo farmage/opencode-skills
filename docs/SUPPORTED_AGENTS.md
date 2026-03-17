@@ -6,7 +6,7 @@ This plugin follows the [Agent Skills specification](https://agentskills.io/spec
 
 | Agent | Developer | Type | Skills Documentation |
 |-------|-----------|------|---------------------|
-| [Claude Code](https://claude.ai/claude-code) | Anthropic | CLI | Native support |
+| [OpenCode](https://github.com/opencode-ai/opencode) | OpenCode AI | CLI | Native support |
 | [GitHub Copilot](https://github.com/features/copilot) | Microsoft/GitHub | VS Code, CLI | [Agent Skills in VS Code](https://code.visualstudio.com/docs/copilot/customization/agent-skills) |
 | [Codex CLI](https://github.com/openai/codex) | OpenAI | CLI | [Codex Skills](https://developers.openai.com/codex/skills/) |
 | [Cursor](https://cursor.com) | Cursor | IDE | [Cursor Skills](https://cursor.com/docs/context/skills) |
@@ -15,7 +15,6 @@ This plugin follows the [Agent Skills specification](https://agentskills.io/spec
 | [Letta](https://github.com/letta-ai/letta) | Letta AI | CLI | [Letta Skills](https://docs.letta.com/letta-code/skills/) |
 | [Roo Code](https://github.com/RooCodeInc/Roo-Code) | Roo Code Inc | VS Code | [Roo Skills](https://docs.roocode.com/features/skills) |
 | [Amp](https://ampcode.com) | Sourcegraph | CLI, VS Code | [Amp Skills](https://ampcode.com/news/agent-skills) |
-| [OpenCode](https://github.com/opencode-ai/opencode) | OpenCode AI | CLI | [OpenCode Skills](https://opencode.ai/docs/skills) |
 | [AdaL CLI](https://sylph.ai/) | SylphAI | CLI | [AdaL Skills](https://docs.sylph.ai/features/plugins-and-skills) |
 
 ## Submit a New Agent

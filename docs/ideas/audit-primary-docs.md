@@ -30,7 +30,7 @@ The four primary documents serve different audiences but suffer from significant
 
 1. **Tries to be everything.** At 438 lines, the README functions as landing page, architecture guide, skills catalog, installation manual, usage tutorial, contributing guide, and marketing page. No single audience can scan it efficiently. A first-time visitor looking for "how do I install this" must scroll past architecture diagrams and 65-skill category lists.
 
-2. **Duplicate installation instructions.** Three installation options appear in the "Quick Start" section at the top AND again in "Installation Options" at line 305. These two sections use different option numbering (the Installation Options section has two entries both labeled "Option 2"), different ordering, and different levels of detail.
+2. **Duplicate installation instructions.** Three installation options appear in the "Quick Start" section at the top AND again in "Installation Options" at line 305. These two sections use different option numbering (the Installation Options section has two entries both labelled "Option 2"), different ordering, and different levels of detail.
 
 3. **Skills Overview duplicates SKILLS_GUIDE.md.** Lines 116-133 reproduce a condensed version of the skill catalog that also lives in SKILLS_GUIDE.md. When skills are added or recategorized, both must be updated. Neither is clearly the source of truth.
 
@@ -38,7 +38,7 @@ The four primary documents serve different audiences but suffer from significant
 
 5. **Project Workflow Commands section duplicates docs/WORKFLOW_COMMANDS.md.** Lines 229-242 duplicate the phase table from the workflow docs. The README should link, not reproduce.
 
-6. **Contributing section duplicates CONTRIBUTING.md.** Lines 362-401 contain a condensed "Adding a New Skill" guide that partially overlaps with CONTRIBUTING.md but uses different line-count guidance (200-400 lines per reference here vs. no specific range in CONTRIBUTING.md). The frontmatter example in the README uses `name: My Skill` (with spaces), while CONTRIBUTING.md uses a different description formula. CLAUDE.md says names must be "letters, numbers, and hyphens only."
+6. **Contributing section duplicates CONTRIBUTING.md.** Lines 362-401 contain a condensed "Adding a New Skill" guide that partially overlaps with CONTRIBUTING.md but uses different line-count guidance (200-400 lines per reference here vs. no specific range in CONTRIBUTING.md). The frontmatter example in the README uses `name: My Skill` (with spaces), while CONTRIBUTING.md uses a different description formula. AGENTS.md says names must be "letters, numbers, and hyphens only."
 
 7. **Stale option numbering.** Under "Installation Options," there are two sections both labeled "Option 2" (npx add-skill and Local Development). Option 3 (Direct Installation) should logically be Option 4, or the npx method should be Option 2 and Local Development should be Option 3.
 
@@ -103,7 +103,7 @@ The four primary documents serve different audiences but suffer from significant
 
 **Weaknesses:**
 
-1. **Installation instructions diverge from README.** QUICKSTART.md offers three methods: Marketplace, Install from GitHub (`claude plugin install https://...`), and Local Development (`cp -r`). README.md offers four methods: Marketplace, npx add-skill, Local Development, and Direct Installation. The "Install from GitHub" method in QUICKSTART.md (`claude plugin install https://...`) does not appear in the README at all. The npx method in the README does not appear in QUICKSTART.md. This is confusing and suggests neither document is the source of truth.
+1. **Installation instructions diverge from README.** QUICKSTART.md offers three methods: Marketplace, Install from GitHub, and Local Development (`cp -r`). README.md offers four methods: Marketplace, npx add-skill, Local Development, and Direct Installation. The "Install from GitHub" method in QUICKSTART.md does not appear in the README at all. The npx method in the README does not appear in QUICKSTART.md. This is confusing and suggests neither document is the source of truth.
 
 2. **Skill counts may go stale.** Lines 50-54 contain hardcoded counts ("12 Language Experts," "10 Backend Framework Experts," "7 Frontend & Mobile Experts"). These are not wrapped in `<!-- SKILL_COUNT -->` markers and will not be updated by `scripts/update-docs.py`. The "10 Backend Framework Experts" claim conflicts with the README, which lists 7 in the "Backend Frameworks" category.
 
@@ -142,13 +142,13 @@ The four primary documents serve different audiences but suffer from significant
 
 **Weaknesses:**
 
-1. **Frontmatter schema conflicts with CLAUDE.md.** CONTRIBUTING.md line 88 shows `name: Skill Name` (with a space), but CLAUDE.md explicitly states: "name: Letters, numbers, and hyphens only (no parentheses or special characters)." The description formula on line 103 (`[Role] for [Domain]. Invoke for [triggers]. Keywords: [terms].`) conflicts with CLAUDE.md's mandate: "descriptions must be TRIGGER-ONLY" and "Format: `Use when [specific triggering conditions]`." These are not minor style differences; they will produce skills that fail validation.
+1. **Frontmatter schema conflicts with AGENTS.md.** CONTRIBUTING.md line 88 shows `name: Skill Name` (with a space), but AGENTS.md explicitly states: "name: Letters, numbers, and hyphens only (no parentheses or special characters)." The description formula on line 103 (`[Role] for [Domain]. Invoke for [triggers]. Keywords: [terms].`) conflicts with AGENTS.md's mandate: "descriptions must be TRIGGER-ONLY" and "Format: `Use when [specific triggering conditions]`." These are not minor style differences; they will produce skills that fail validation.
 
 2. **Missing validation step.** The contribution workflow (steps 1-6) does not mention running `python scripts/validate-skills.py` before submitting a PR. Given that CI runs this check, contributors will hit failures they could have caught locally. This should be step 4.5.
 
-3. **Reference file guidance is vague.** The README says "200-400 lines each" for references. CLAUDE.md says "100-600 lines per reference file." CONTRIBUTING.md's Progressive Disclosure section says "200 lines" as a threshold for when to split, but does not state a target range. Three different documents give three different numbers.
+3. **Reference file guidance is vague.** The README says "200-400 lines each" for references. AGENTS.md says "100-600 lines per reference file." CONTRIBUTING.md's Progressive Disclosure section says "200 lines" as a threshold for when to split, but does not state a target range. Three different documents give three different numbers.
 
-4. **Testing instructions are impractical.** Step 4 says to `cp -r skills/* ~/.claude/skills/` and restart Claude Code. For marketplace-installed plugins, this method may not work or may conflict with the installed version. No guidance is given for testing with the marketplace/local plugin workflow.
+4. **Testing instructions are impractical.** Step 4 says to `cp -r skills/* ~/.config/opencode/skills/` and restart OpenCode. For marketplace-installed plugins, this method may not work or may conflict with the installed version. No guidance is given for testing with the marketplace/local plugin workflow.
 
 5. **No mention of the `commands/` directory.** The guide covers skill creation in detail but says nothing about creating or modifying workflow commands. A contributor looking to add a command has no guidance.
 
@@ -157,9 +157,9 @@ The four primary documents serve different audiences but suffer from significant
 7. **"Recognition" section references a CONTRIBUTORS.md file.** This file does not appear in the project structure shown in README.md. If it exists, it should be linked. If it does not exist, this is a broken promise.
 
 **Recommendations:**
-- Align the frontmatter schema with CLAUDE.md immediately. The description formula must say "Use when [triggering conditions]," not the `[Role] for [Domain]` pattern. The name field must show a hyphenated example.
+- Align the frontmatter schema with AGENTS.md immediately. The description formula must say "Use when [triggering conditions]," not the `[Role] for [Domain]` pattern. The name field must show a hyphenated example.
 - Add `python scripts/validate-skills.py --skill my-new-skill` as an explicit step before submitting a PR
-- Standardize reference file line guidance across all documents (CLAUDE.md's 100-600 range is the most permissive; pick one range and use it everywhere)
+- Standardize reference file line guidance across all documents (AGENTS.md's 100-600 range is the most permissive; pick one range and use it everywhere)
 - Add a section on contributing workflow commands
 - Link or create the CONTRIBUTORS.md file
 - Add a note about testing with the marketplace install method
@@ -256,19 +256,19 @@ Everything else moves to dedicated pages.
 
 1. **Fix duplicate "Option 2" numbering in README.md Installation Options.** This is a visible bug.
 
-2. **Align CONTRIBUTING.md frontmatter schema with CLAUDE.md.** The description formula and name format directly conflict with the project's own CLAUDE.md. Contributors following CONTRIBUTING.md will produce skills that fail validation. Change the description formula to `Use when [triggering conditions]` and the name example to `my-skill-name` (hyphenated).
+2. **Align CONTRIBUTING.md frontmatter schema with AGENTS.md.** The description formula and name format directly conflict with the project's own AGENTS.md. Contributors following CONTRIBUTING.md will produce skills that fail validation. Change the description formula to `Use when [triggering conditions]` and the name example to `my-skill-name` (hyphenated).
 
 3. **Fix stale count "10 Backend Framework Experts" in QUICKSTART.md.** This contradicts the README (which says 7). Either wrap these counts in update markers or replace with a general statement.
 
 ### High Priority (Next Release)
 
-4. **Consolidate installation instructions.** Designate QUICKSTART.md as the single source of truth. README.md gets a one-liner and a link. CONTRIBUTING.md links to QUICKSTART.md for testing setup. Remove the `claude plugin install https://...` method from QUICKSTART.md if it is not a supported path, or add it to the README if it is.
+4. **Consolidate installation instructions.** Designate QUICKSTART.md as the single source of truth. README.md gets a one-liner and a link. CONTRIBUTING.md links to QUICKSTART.md for testing setup.
 
 5. **Remove duplicated sections from README.md.** Replace inline Context Engineering, Workflow Commands, Skills Overview, and Contributing sections with 2-line summaries and links. Target: README under 200 lines.
 
 6. **Add `validate-skills.py` step to CONTRIBUTING.md.** Insert between "Test Your Changes" and "Commit Your Changes."
 
-7. **Standardize reference file line guidance.** Pick one range (recommend 100-600 from CLAUDE.md) and use it in README.md, CONTRIBUTING.md, and CLAUDE.md consistently.
+7. **Standardize reference file line guidance.** Pick one range (recommend 100-600 from AGENTS.md) and use it in README.md, CONTRIBUTING.md, and AGENTS.md consistently.
 
 ### Medium Priority (Docs Site Prep)
 
@@ -303,7 +303,7 @@ Everything else moves to dedicated pages.
 | Criterion | README | QUICKSTART | SKILLS_GUIDE | CONTRIBUTING |
 |-----------|--------|------------|--------------|--------------|
 | Descriptive H1 | No (image banner, no text H1) | Yes | Yes | Yes |
-| Unique page title potential | Yes ("Claude Skills") | Yes ("Quick Start Guide") | Yes ("Skills Quick Reference") | Yes ("Contributing") |
+| Unique page title potential | Yes ("OpenCode Skills") | Yes ("Quick Start Guide") | Yes ("Skills Quick Reference") | Yes ("Contributing") |
 | Scannable headings | Mixed (some headings are vague: "Architecture," "Usage Patterns") | Yes | Yes | Yes |
 | Keyword density | High (tech stack list) | Medium | High (skill names, frameworks) | Low (process-focused) |
 | Internal linking | Good (links to all major docs) | Weak (3 links) | None | Weak (1 link) |

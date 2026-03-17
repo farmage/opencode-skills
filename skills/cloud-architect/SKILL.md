@@ -2,6 +2,7 @@
 name: cloud-architect
 description: Designs cloud architectures, creates migration plans, generates cost optimization recommendations, and produces disaster recovery strategies across AWS, Azure, and GCP. Use when designing cloud architectures, planning migrations, or optimizing multi-cloud deployments. Invoke for Well-Architected Framework, cost optimization, disaster recovery, landing zones, security architecture, serverless design.
 license: MIT
+compatibility: opencode
 metadata:
   author: https://github.com/Jeffallan
   version: "1.1.0"
@@ -10,7 +11,7 @@ metadata:
   role: architect
   scope: infrastructure
   output-format: architecture
-  related-skills: devops-engineer, kubernetes-specialist, terraform-engineer, security-reviewer, microservices-architect, monitoring-expert
+  related-skills: devops-engineer, dotnet-core-expert, kubernetes-specialist, microservices-architect, ml-pipeline, monitoring-expert, salesforce-developer, security-reviewer, sre-engineer, terraform-engineer
 ---
 
 # Cloud Architect

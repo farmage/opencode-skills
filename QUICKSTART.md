@@ -1,44 +1,39 @@
 # Quick Start Guide
 
-Get up and running with the Fullstack Dev Skills Plugin.
+Get up and running with the OpenCode Skills pack.
 
 ## Installation (Choose One)
 
-### Marketplace (Recommended)
+### Global Install (Recommended)
 ```bash
-# Add the marketplace
-/plugin marketplace add jeffallan/claude-skills
+# Clone the repo
+git clone https://github.com/farmage/opencode-skills.git
+cd opencode-skills
 
-# Install the plugin
-/plugin install fullstack-dev-skills@jeffallan
+# Copy skills to OpenCode global skills directory
+cp -r ./skills/* ~/.config/opencode/skills/
 
-# Restart Claude Code when prompted
+# Copy commands to OpenCode global commands directory
+cp -r ./.opencode/commands/* ~/.config/opencode/commands/
+
+# Restart OpenCode when done
 ```
 
-### Install from GitHub
+### Project-Local Install
 ```bash
-claude plugin install https://github.com/jeffallan/claude-skills
-```
+# Copy skills into your project
+cp -r ./skills/* .opencode/skills/
 
-### Install via skills.sh
-```bash
-npx skills add jeffallan/claude-skills
+# Copy commands into your project
+cp -r ./.opencode/commands/* .opencode/commands/
 ```
-
-> **Note:** This method installs skills only. Slash commands (`/common-ground`, `/project:*`) are not included.
 
 ### Install via Agent Skills CLI
 ```bash
 npx agent-skills-cli@latest add @Jeffallan/claude-skills
 ```
 
-> **Note:** This method installs skills only. Slash commands (`/common-ground`, `/project:*`) are not included. Installs to 42+ AI agents including Claude, Cursor, Copilot, Windsurf, and more. [Learn more](https://www.agentskills.in)
-
-### Local Development
-```bash
-cp -r ./skills/* ~/.claude/skills/
-```
-Restart Claude Code after copying.
+> **Note:** This method installs skills only. Slash commands (`/common-ground`, `/discovery/*`) are not included. Installs to 42+ AI agents including OpenCode, Claude, Cursor, Copilot, Windsurf, and more. [Learn more](https://www.agentskills.in)
 
 ## Test Your Installation
 
@@ -71,16 +66,16 @@ Verify skills are working:
 
 ### 2. First Prompt
 
-Specify the tech stack and Claude activates the appropriate skills:
+Specify the tech stack and OpenCode activates the appropriate skills:
 
 ```
 "I need to implement a user profile feature in my NestJS API with authentication"
-→ Activates NestJS Expert + Secure Code Guardian
+# Activates NestJS Expert + Secure Code Guardian
 ```
 
 ```
 "My React app has a memory leak, help me debug it"
-→ Activates Debugging Wizard + React Expert
+# Activates Debugging Wizard + React Expert
 ```
 
 ### 3. Learn More
@@ -99,7 +94,7 @@ Include relevant information:
 ### 2. Ask for Multiple Perspectives
 ```
 "Review this authentication code for both security and performance issues"
-[Activates: Security Reviewer + Code Reviewer]
+# Activates: Security Reviewer + Code Reviewer
 ```
 
 ### 3. Reference the Guides
@@ -112,28 +107,52 @@ Include relevant information:
 ## Troubleshooting
 
 ### Skills Not Activating
-1. Restart Claude Code after installation
-2. Check skill files exist: `ls ~/.claude/skills/`
+1. Restart OpenCode after installation
+2. Check skill files exist: `ls ~/.config/opencode/skills/`
 3. Be more specific with framework/technology names
 4. Try explicitly mentioning the skill name: "Use the NestJS Expert to help me..."
 
 ### Skills Not Loading After Install
-1. Verify the plugin is installed: `/plugin list`
-2. Check for conflicting skill names in `~/.claude/skills/`
-3. Try reinstalling: `/plugin uninstall fullstack-dev-skills@jeffallan` then reinstall
+1. Verify skills directory structure: each skill needs `<name>/SKILL.md`
+2. Check for YAML frontmatter with `name` and `description` fields
+3. Ensure skill names match directory names (lowercase, hyphens only)
 
 ### How to Update
 ```bash
-# Marketplace installs update automatically
-# For manual installs, pull latest and re-copy:
-cd claude-skills && git pull
-cp -r ./skills/* ~/.claude/skills/
+cd opencode-skills && git pull
+cp -r ./skills/* ~/.config/opencode/skills/
 ```
 
 ### Need Help
 - Check [Skills Guide](SKILLS_GUIDE.md) for skill-specific guidance
 - Review individual `skills/*/SKILL.md` files
 - Open an [issue on GitHub](https://github.com/jeffallan/claude-skills/issues)
+
+## OpenCode Configuration
+
+You can also configure skills permissions in your `opencode.json`:
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "skill": {
+      "*": "allow"
+    }
+  }
+}
+```
+
+And reference additional instruction files:
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": ["AGENTS.md", "docs/guidelines.md"]
+}
+```
+
+See [OpenCode Config docs](https://opencode.ai/docs/config/) for full reference.
 
 ## Next Steps
 

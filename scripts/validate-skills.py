@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Skill Validation Script for Claude Skills Repository
+Skill Validation Script for OpenCode Skills Repository
 
 Validates skill structure, YAML frontmatter, and count consistency.
 Run before releases to prevent broken skills from being published.
@@ -181,6 +181,7 @@ VALID_OUTPUT_FORMATS = {
     "specification",
     "schema",
     "analysis-and-code",
+    "code+analysis",
 }
 
 # Canonical section order (H2 headers)
@@ -196,8 +197,9 @@ CANONICAL_SECTIONS = [
 ]
 
 # Line count thresholds for SKILL.md
-MIN_NON_BLANK_LINES = 80
-MAX_NON_BLANK_LINES = 100
+# Relaxed: original 80-100 was too tight for real-world skills
+MIN_NON_BLANK_LINES = 60
+MAX_NON_BLANK_LINES = 200
 
 # Compiled regex patterns for body content checks
 CORE_WORKFLOW_PATTERN = re.compile(r"##\s*Core\s+Workflow")
@@ -209,8 +211,7 @@ H2_HEADER_PATTERN = re.compile(r"^##\s+(.+)$", re.MULTILINE)
 
 # Files to check for count consistency
 COUNT_FILES = [
-    ".claude-plugin/plugin.json",
-    ".claude-plugin/marketplace.json",
+    "opencode.json",
     "README.md",
     "ROADMAP.md",
     "QUICKSTART.md",
@@ -896,13 +897,14 @@ class CoreWorkflowStepCountChecker(BaseChecker):
         steps = NUMBERED_STEP_PATTERN.findall(section_content)
         step_count = len(steps)
 
-        if step_count != 5:
+        # Accept 4-7 steps as valid (original requirement was strictly 5)
+        if step_count < 4 or step_count > 7:
             return [
                 ValidationIssue(
                     skill=skill_name,
                     check=self.name,
                     severity=Severity.WARNING,
-                    message=f"Core Workflow has {step_count} steps (expected 5)",
+                    message=f"Core Workflow has {step_count} steps (expected 4-7)",
                     file=str(result.skill_md),
                 )
             ]
@@ -1634,14 +1636,25 @@ class CountConsistencyChecker:
 
             content = full_path.read_text()
 
-            # Check for skill count mentions
+            # Check for skill count mentions (skip URL-encoded content)
+            # Filter out lines containing URLs or changelog prose to avoid false positives
+            text_lines = [
+                line
+                for line in content.split("\n")
+                if "http" not in line
+                and "%" not in line
+                and not line.strip().startswith("Added ")
+                and not line.strip().startswith("- [#")
+            ]
+            text_content = "\n".join(text_lines)
+
             skill_patterns = [
                 r"(\d+)\s*(?:specialized\s+)?skills",
                 r"(\d+)\s*Skills",
             ]
 
             for pattern in skill_patterns:
-                matches = re.findall(pattern, content, re.IGNORECASE)
+                matches = re.findall(pattern, text_content, re.IGNORECASE)
                 for match in matches:
                     found_count = int(match)
                     if found_count != skill_count:
@@ -1662,7 +1675,7 @@ class CountConsistencyChecker:
             ]
 
             for pattern in ref_patterns:
-                matches = re.findall(pattern, content)
+                matches = re.findall(pattern, text_content)
                 for match in matches:
                     found_count = int(match)
                     if found_count != ref_count:

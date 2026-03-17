@@ -2,6 +2,7 @@
 name: python-pro
 description: Use when building Python 3.11+ applications requiring type safety, async programming, or robust error handling. Generates type-annotated Python code, configures mypy in strict mode, writes pytest test suites with fixtures and mocking, and validates code with black and ruff. Invoke for type hints, async/await patterns, dataclasses, dependency injection, logging configuration, and structured error handling.
 license: MIT
+compatibility: opencode
 metadata:
   author: https://github.com/Jeffallan
   version: "1.1.0"
@@ -10,7 +11,7 @@ metadata:
   role: specialist
   scope: implementation
   output-format: code
-  related-skills: fastapi-expert, devops-engineer
+  related-skills: devops-engineer, fastapi-expert, ml-pipeline, pandas-pro, rag-architect, spark-engineer
 ---
 
 # Python Pro

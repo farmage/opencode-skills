@@ -2,6 +2,7 @@
 name: mcp-developer
 description: Use when building, debugging, or extending MCP servers or clients that connect AI systems with external tools and data sources. Invoke to implement tool handlers, configure resource providers, set up stdio/HTTP/SSE transport layers, validate schemas with Zod or Pydantic, debug protocol compliance issues, or scaffold complete MCP server/client projects using TypeScript or Python SDKs.
 license: MIT
+compatibility: opencode
 metadata:
   author: https://github.com/Jeffallan
   version: "1.1.0"
@@ -10,7 +11,7 @@ metadata:
   role: specialist
   scope: implementation
   output-format: code
-  related-skills: fastapi-expert, typescript-pro, security-reviewer, devops-engineer
+  related-skills: atlassian-mcp, devops-engineer, fastapi-expert, security-reviewer, typescript-pro
 ---
 
 # MCP Developer
