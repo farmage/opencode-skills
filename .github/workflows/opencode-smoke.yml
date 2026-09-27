@@ -33,39 +33,14 @@ jobs:
           test "$(find .opencode/skills -name SKILL.md -type f | wc -l)" -eq 67
           test -f .opencode/skills/django-storages-s3/SKILL.md
 
-      - name: Start OpenCode server
-        env:
-          OPENCODE_SERVER_PASSWORD: ci-smoke-password
-          OPENCODE_DISABLE_MODELS_FETCH: "true"
-        run: |
-          opencode serve --hostname 127.0.0.1 --port 4096 > /tmp/opencode.log 2>&1 &
-          echo $! > /tmp/opencode.pid
-          for i in {1..30}; do
-            if curl -fsS -u opencode:ci-smoke-password http://127.0.0.1:4096/api/info >/dev/null 2>&1; then
-              exit 0
-            fi
-            sleep 1
-          done
-          cat /tmp/opencode.log
-          exit 1
-
       - name: Verify OpenCode discovers all skills
-        env:
-          OPENCODE_SERVER_PASSWORD: ci-smoke-password
         run: |
-          RESPONSE="$(curl -fsS -u opencode:ci-smoke-password \
-            --get \
-            --data-urlencode "location[directory]=$GITHUB_WORKSPACE" \
-            http://127.0.0.1:4096/api/skill)"
-          echo "$RESPONSE" | jq .
+          opencode debug skill > /tmp/skills.json
+          jq . /tmp/skills.json
 
-          COUNT="$(echo "$RESPONSE" | jq '.data | length')"
+          COUNT="$(jq 'length' /tmp/skills.json)"
           test "$COUNT" -eq 67
 
-          echo "$RESPONSE" | jq -e '.data[] | select(.name == "django-storages-s3")' >/dev/null
-          echo "$RESPONSE" | jq -e '.data[] | select(.name == "prompt-engineer")' >/dev/null
-          echo "$RESPONSE" | jq -e '.data[] | select(.name == "csharp-developer")' >/dev/null
-
-      - name: Show server log on failure
-        if: failure()
-        run: cat /tmp/opencode.log || true
+          jq -e '.[] | select(.name == "django-storages-s3")' /tmp/skills.json >/dev/null
+          jq -e '.[] | select(.name == "prompt-engineer")' /tmp/skills.json >/dev/null
+          jq -e '.[] | select(.name == "csharp-developer")' /tmp/skills.json >/dev/null
