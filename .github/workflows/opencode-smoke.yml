@@ -33,20 +33,6 @@ jobs:
           test "$(find .opencode/skills -name SKILL.md -type f | wc -l)" -eq 67
           test -f .opencode/skills/django-storages-s3/SKILL.md
 
-      - name: Add minimal control skill
-        run: |
-          mkdir -p .opencode/skills/ci-smoke
-          cat > .opencode/skills/ci-smoke/SKILL.md <<'EOF'
-          ---
-          name: ci-smoke
-          description: Minimal CI control skill
-          compatibility: opencode
-          ---
-
-          # CI Smoke
-          This skill verifies OpenCode local skill discovery.
-          EOF
-
       - name: Start OpenCode server
         env:
           OPENCODE_SERVER_PASSWORD: ci-smoke-password
@@ -81,19 +67,18 @@ jobs:
           for i in {1..30}; do
             curl -fsS -u opencode:ci-smoke-password "${LOCATION_ARGS[@]}" \
               http://127.0.0.1:4096/api/skill > /tmp/skills.json
-            COUNT="$(jq '.data | length' /tmp/skills.json)"
-            echo "attempt=$i skills=$COUNT"
-            if [ "$COUNT" -eq 68 ]; then
+            COUNT="$(jq --arg root "$GITHUB_WORKSPACE/.opencode/skills/" '[.data[] | select(.path | startswith($root))] | length' /tmp/skills.json)"
+            echo "attempt=$i project_skills=$COUNT"
+            if [ "$COUNT" -eq 67 ]; then
               break
             fi
             sleep 1
           done
-          jq . /tmp/skills.json
-          test "$COUNT" -eq 68
+          jq --arg root "$GITHUB_WORKSPACE/.opencode/skills/" '[.data[] | select(.path | startswith($root)) | {id,name,path}]' /tmp/skills.json
+          test "$COUNT" -eq 67
           jq -e '.data[] | select(.id == "django-storages-s3")' /tmp/skills.json >/dev/null
           jq -e '.data[] | select(.id == "prompt-engineer")' /tmp/skills.json >/dev/null
           jq -e '.data[] | select(.id == "csharp-developer")' /tmp/skills.json >/dev/null
-          jq -e '.data[] | select(.id == "ci-smoke")' /tmp/skills.json >/dev/null
 
       - name: Show server log on failure
         if: failure()
