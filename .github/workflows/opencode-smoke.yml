@@ -76,11 +76,19 @@ jobs:
           curl -fsS -u opencode:ci-smoke-password "${LOCATION_ARGS[@]}" \
             http://127.0.0.1:4096/api/config | tee /tmp/config.json | jq .
 
-          echo "Discovered skills:"
-          curl -fsS -u opencode:ci-smoke-password "${LOCATION_ARGS[@]}" \
-            http://127.0.0.1:4096/api/skill | tee /tmp/skills.json | jq .
-
-          COUNT="$(jq '.data | length' /tmp/skills.json)"
+          echo "Waiting for skill discovery:"
+          COUNT=0
+          for i in {1..30}; do
+            curl -fsS -u opencode:ci-smoke-password "${LOCATION_ARGS[@]}" \
+              http://127.0.0.1:4096/api/skill > /tmp/skills.json
+            COUNT="$(jq '.data | length' /tmp/skills.json)"
+            echo "attempt=$i skills=$COUNT"
+            if [ "$COUNT" -eq 68 ]; then
+              break
+            fi
+            sleep 1
+          done
+          jq . /tmp/skills.json
           test "$COUNT" -eq 68
           jq -e '.data[] | select(.id == "django-storages-s3")' /tmp/skills.json >/dev/null
           jq -e '.data[] | select(.id == "prompt-engineer")' /tmp/skills.json >/dev/null
