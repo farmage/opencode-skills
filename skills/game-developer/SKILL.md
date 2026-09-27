@@ -11,7 +11,7 @@ metadata:
   role: specialist
   scope: implementation
   output-format: code
-  related-skills: cpp-pro, typescript-pro, test-master
+  related-skills: 
 ---
 
 # Game Developer
@@ -160,3 +160,5 @@ public class IdleState : State
     public override void Exit() { }
 }
 ```
+
+[Documentation](https://jeffallan.github.io/claude-skills/skills/specialized/game-developer/)

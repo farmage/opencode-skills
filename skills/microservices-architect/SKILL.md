@@ -11,7 +11,7 @@ metadata:
   role: architect
   scope: system-design
   output-format: architecture
-  related-skills: architecture-designer, cloud-architect, devops-engineer, dotnet-core-expert, golang-pro, graphql-architect, kubernetes-specialist, monitoring-expert, spring-boot-engineer
+  related-skills: devops-engineer, kubernetes-specialist, graphql-architect, architecture-designer, monitoring-expert
 ---
 
 # Microservices Architect
@@ -163,3 +163,5 @@ When designing microservices architecture, provide:
 ## Knowledge Reference
 
 Domain-driven design, bounded contexts, event storming, REST/gRPC, message queues (Kafka, RabbitMQ), service mesh (Istio, Linkerd), Kubernetes, circuit breakers, saga patterns, event sourcing, CQRS, distributed tracing (Jaeger, Zipkin), API gateways, eventual consistency, CAP theorem
+
+[Documentation](https://jeffallan.github.io/claude-skills/skills/api-architecture/microservices-architect/)

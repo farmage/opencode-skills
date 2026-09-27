@@ -11,7 +11,7 @@ metadata:
   role: specialist
   scope: implementation
   output-format: code
-  related-skills: fullstack-guardian, vue-expert-js
+  related-skills: fullstack-guardian
 ---
 
 # JavaScript Pro
@@ -131,3 +131,5 @@ When implementing JavaScript features, provide:
 2. Test file with comprehensive coverage
 3. JSDoc documentation for public APIs
 4. Brief explanation of patterns used
+
+[Documentation](https://jeffallan.github.io/claude-skills/skills/language/javascript-pro/)

@@ -11,7 +11,7 @@ metadata:
   role: specialist
   scope: implementation
   output-format: code
-  related-skills: fullstack-guardian, playwright-expert, react-native-expert, shopify-expert, test-master
+  related-skills: fullstack-guardian, playwright-expert, test-master
 ---
 
 # React Expert
@@ -148,3 +148,5 @@ When implementing React features, provide:
 ## Knowledge Reference
 
 React 19, Server Components, use() hook, Suspense, TypeScript, TanStack Query, Zustand, Redux Toolkit, React Router, React Testing Library, Vitest/Jest, Next.js App Router, accessibility (WCAG)
+
+[Documentation](https://jeffallan.github.io/claude-skills/skills/frontend/react-expert/)

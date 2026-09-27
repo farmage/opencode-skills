@@ -97,7 +97,7 @@ def convert_command(src_path: str, dst_path: str) -> None:
         print(f"  SKIP (not found): {src_path}")
         return
 
-    with open(src_path, "r") as f:
+    with open(src_path) as f:
         content = f.read()
 
     # Convert frontmatter

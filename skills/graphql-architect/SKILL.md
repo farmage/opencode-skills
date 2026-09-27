@@ -11,7 +11,7 @@ metadata:
   role: architect
   scope: design
   output-format: schema
-  related-skills: api-designer, database-optimizer, microservices-architect, shopify-expert
+  related-skills: api-designer, microservices-architect, database-optimizer
 ---
 
 # GraphQL Architect
@@ -145,3 +145,5 @@ When implementing GraphQL features, provide:
 ## Knowledge Reference
 
 Apollo Server, Apollo Federation 2.5+, GraphQL SDL, DataLoader, GraphQL Subscriptions, WebSocket, Redis pub/sub, schema composition, query complexity, persisted queries, schema stitching, type generation
+
+[Documentation](https://jeffallan.github.io/claude-skills/skills/api-architecture/graphql-architect/)

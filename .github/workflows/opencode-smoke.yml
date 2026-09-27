@@ -1,0 +1,87 @@
+name: OpenCode Smoke Test
+
+on:
+  push:
+    branches:
+      - "sync/**"
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  opencode-skills:
+    name: OpenCode loads all skills
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+
+      - name: Install OpenCode
+        run: |
+          npm install --global @opencode/cli
+          opencode --version
+
+      - name: Verify project skill tree
+        run: |
+          test "$(find .opencode/skills -name SKILL.md -type f | wc -l)" -eq 67
+          test -f .opencode/skills/django-storages-s3/SKILL.md
+
+      - name: Start OpenCode server
+        env:
+          OPENCODE_SERVER_PASSWORD: ci-smoke-password
+          OPENCODE_LOG_LEVEL: DEBUG
+        run: |
+          opencode serve --hostname 127.0.0.1 --port 4096 > /tmp/opencode.log 2>&1 &
+          for i in {1..30}; do
+            if curl -fsS -u opencode:ci-smoke-password http://127.0.0.1:4096/global/health >/dev/null 2>&1; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/opencode.log
+          exit 1
+
+      - name: Verify OpenCode discovers all skills
+        env:
+          OPENCODE_SERVER_PASSWORD: ci-smoke-password
+        run: |
+          LOCATION_ARGS=(--get --data-urlencode "location[directory]=$GITHUB_WORKSPACE")
+
+          echo "Resolved location:"
+          curl -fsS -u opencode:ci-smoke-password "${LOCATION_ARGS[@]}" \
+            http://127.0.0.1:4096/api/location | tee /tmp/location.json | jq .
+
+          echo "Discovered config entries:"
+          curl -fsS -u opencode:ci-smoke-password "${LOCATION_ARGS[@]}" \
+            http://127.0.0.1:4096/api/config | tee /tmp/config.json | jq .
+
+          echo "Waiting for skill discovery:"
+          COUNT=0
+          for i in {1..30}; do
+            curl -fsS -u opencode:ci-smoke-password "${LOCATION_ARGS[@]}" \
+              http://127.0.0.1:4096/api/skill > /tmp/skills.json
+            COUNT="$(jq --arg root "$GITHUB_WORKSPACE/.opencode/skills/" '[.data[] | select(.path | startswith($root))] | length' /tmp/skills.json)"
+            echo "attempt=$i project_skills=$COUNT"
+            if [ "$COUNT" -eq 67 ]; then
+              break
+            fi
+            sleep 1
+          done
+          jq --arg root "$GITHUB_WORKSPACE/.opencode/skills/" '[.data[] | select(.path | startswith($root)) | {id,name,path}]' /tmp/skills.json
+          test "$COUNT" -eq 67
+          jq -e '.data[] | select(.id == "django-storages-s3")' /tmp/skills.json >/dev/null
+          jq -e '.data[] | select(.id == "prompt-engineer")' /tmp/skills.json >/dev/null
+          jq -e '.data[] | select(.id == "csharp-developer")' /tmp/skills.json >/dev/null
+
+      - name: Show server log on failure
+        if: failure()
+        run: |
+          cat /tmp/opencode.log || true
+          find "$HOME/.local/share/opencode" -type f -path '*/log/*' -print -exec tail -n 300 {} \; 2>/dev/null || true

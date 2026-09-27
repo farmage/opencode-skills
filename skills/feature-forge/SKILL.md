@@ -11,7 +11,7 @@ metadata:
   role: specialist
   scope: design
   output-format: document
-  related-skills: fullstack-guardian, spec-miner, test-master, the-fool
+  related-skills: fullstack-guardian, spec-miner, test-master
 ---
 
 # Feature Forge
@@ -97,3 +97,5 @@ Then they are redirected to the dashboard within 2 seconds.
 ```
 
 Save as: `specs/{feature_name}.spec.md`
+
+[Documentation](https://jeffallan.github.io/claude-skills/skills/workflow/feature-forge/)

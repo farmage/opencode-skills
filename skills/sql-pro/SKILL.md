@@ -11,7 +11,7 @@ metadata:
   role: specialist
   scope: implementation
   output-format: code
-  related-skills: devops-engineer, spark-engineer
+  related-skills: devops-engineer
 ---
 
 # SQL Pro
@@ -128,3 +128,5 @@ When implementing SQL solutions, provide:
 3. Execution plan analysis
 4. Performance metrics (before/after)
 5. Platform-specific notes if applicable
+
+[Documentation](https://jeffallan.github.io/claude-skills/skills/language/sql-pro/)

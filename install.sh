@@ -3,7 +3,7 @@ set -euo pipefail
 
 # ─── OpenCode Skills Installer ────────────────────────────────────────────────
 #
-# Install 66 specialized skills + 10 workflow commands for OpenCode.
+# Install 67 specialized skills + 10 workflow commands for OpenCode.
 #
 # Usage:
 #   Local (from cloned repo):

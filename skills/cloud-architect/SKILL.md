@@ -11,7 +11,7 @@ metadata:
   role: architect
   scope: infrastructure
   output-format: architecture
-  related-skills: devops-engineer, dotnet-core-expert, kubernetes-specialist, microservices-architect, ml-pipeline, monitoring-expert, salesforce-developer, security-reviewer, sre-engineer, terraform-engineer
+  related-skills: devops-engineer, kubernetes-specialist, terraform-engineer, security-reviewer, microservices-architect, monitoring-expert
 ---
 
 # Cloud Architect
@@ -215,3 +215,5 @@ When designing cloud architecture, provide:
 3. Security architecture (IAM, network segmentation, encryption)
 4. Cost estimation and optimization strategy
 5. Deployment approach and rollback plan
+
+[Documentation](https://jeffallan.github.io/claude-skills/skills/infrastructure/cloud-architect/)

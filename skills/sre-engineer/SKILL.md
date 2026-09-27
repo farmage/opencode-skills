@@ -11,7 +11,7 @@ metadata:
   role: specialist
   scope: implementation
   output-format: code
-  related-skills: chaos-engineer, cloud-architect, devops-engineer, kubernetes-specialist, postgres-pro
+  related-skills: devops-engineer, cloud-architect, kubernetes-specialist
 ---
 
 # SRE Engineer
@@ -180,3 +180,5 @@ if __name__ == "__main__":
     else:
         print("Within SLO threshold — no action required")
 ```
+
+[Documentation](https://jeffallan.github.io/claude-skills/skills/devops/sre-engineer/)

@@ -5,13 +5,13 @@ license: MIT
 compatibility: opencode
 metadata:
   author: https://github.com/Jeffallan
-  version: "1.1.0"
+  version: "1.1.1"
   domain: infrastructure
   triggers: database optimization, slow query, query performance, database tuning, index optimization, execution plan, EXPLAIN ANALYZE, database performance, PostgreSQL optimization, MySQL optimization
   role: specialist
   scope: optimization
   output-format: analysis-and-code
-  related-skills: devops-engineer
+  related-skills: devops-engineer, postgres-pro, graphql-architect
 ---
 
 # Database Optimizer
@@ -146,3 +146,5 @@ When optimizing database performance, provide:
 4. Implementation SQL / config changes
 5. Validation queries to measure improvement
 6. Monitoring recommendations
+
+[Documentation](https://jeffallan.github.io/claude-skills/skills/infrastructure/database-optimizer/)

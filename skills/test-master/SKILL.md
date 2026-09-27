@@ -5,13 +5,13 @@ license: MIT
 compatibility: opencode
 metadata:
   author: https://github.com/Jeffallan
-  version: "1.1.0"
+  version: "1.1.1"
   domain: quality
   triggers: test, testing, QA, unit test, integration test, E2E, coverage, performance test, security test, regression, test strategy, test automation, test framework, quality metrics, defect, exploratory, usability, accessibility, localization, manual testing, shift-left, quality gate, flaky test, test maintenance
   role: specialist
   scope: testing
   output-format: report
-  related-skills: angular-architect, code-reviewer, debugging-wizard, devops-engineer, django-expert, dotnet-core-expert, fastapi-expert, feature-forge, flutter-expert, fullstack-guardian, game-developer, golang-pro, kotlin-specialist, laravel-specialist, legacy-modernizer, nestjs-expert, playwright-expert, prompt-engineer, react-expert, react-native-expert, rust-engineer, swift-expert
+  related-skills: fullstack-guardian, playwright-expert, devops-engineer, debugging-wizard, code-reviewer, feature-forge
 ---
 
 # Test Master
@@ -93,3 +93,5 @@ When creating test plans, provide:
 3. Coverage analysis
 4. Findings with severity (Critical/High/Medium/Low)
 5. Specific fix recommendations
+
+[Documentation](https://jeffallan.github.io/claude-skills/skills/quality/test-master/)

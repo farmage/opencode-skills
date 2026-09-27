@@ -11,7 +11,7 @@ metadata:
   role: specialist
   scope: implementation
   output-format: code
-  related-skills: cpp-pro, test-master
+  related-skills: test-master
 ---
 
 # Rust Engineer
@@ -166,3 +166,5 @@ When implementing Rust features, provide:
 ## Knowledge Reference
 
 Rust 2021, Cargo, ownership/borrowing, lifetimes, traits, generics, async/await, tokio, Result/Option, thiserror/anyhow, serde, clippy, rustfmt, cargo-test, criterion benchmarks, MIRI, unsafe Rust
+
+[Documentation](https://jeffallan.github.io/claude-skills/skills/language/rust-engineer/)
