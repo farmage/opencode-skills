@@ -12,7 +12,7 @@ metadata:
   role: specialist
   scope: review
   output-format: document
-  related-skills: architecture-designer, code-documenter, feature-forge, fullstack-guardian
+  related-skills: feature-forge, fullstack-guardian, architecture-designer
 ---
 
 # Spec Miner
@@ -107,3 +107,5 @@ Include:
 5. Inferred acceptance criteria
 6. Uncertainties and questions
 7. Recommendations
+
+[Documentation](https://jeffallan.github.io/claude-skills/skills/workflow/spec-miner/)

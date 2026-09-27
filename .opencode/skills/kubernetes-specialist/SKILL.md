@@ -5,13 +5,13 @@ license: MIT
 compatibility: opencode
 metadata:
   author: https://github.com/Jeffallan
-  version: "1.1.0"
+  version: "1.1.1"
   domain: infrastructure
   triggers: Kubernetes, K8s, kubectl, Helm, container orchestration, pod deployment, RBAC, NetworkPolicy, Ingress, StatefulSet, Operator, CRD, CustomResourceDefinition, ArgoCD, Flux, GitOps, Istio, Linkerd, service mesh, multi-cluster, cost optimization, VPA, spot instances
   role: specialist
   scope: infrastructure
   output-format: manifests
-  related-skills: devops-engineer, cloud-architect, sre-engineer
+  related-skills: devops-engineer, cloud-architect, sre-engineer, terraform-engineer, security-reviewer, chaos-engineer
 ---
 
 # Kubernetes Specialist
@@ -240,3 +240,5 @@ When implementing Kubernetes resources, provide:
 2. RBAC configuration if needed (ServiceAccount, Role, RoleBinding)
 3. NetworkPolicy for network isolation
 4. Brief explanation of design decisions and security considerations
+
+[Documentation](https://jeffallan.github.io/claude-skills/skills/infrastructure/kubernetes-specialist/)

@@ -41,9 +41,9 @@ Restart OpenCode after installation. See [Quick Start Guide](QUICKSTART.md) for 
 
 | | Count | Description |
 |-|------:|-------------|
-| Skills | <!-- SKILL_COUNT -->66<!-- /SKILL_COUNT --> | Specialized agents across 12 domains |
+| Skills | <!-- SKILL_COUNT -->67<!-- /SKILL_COUNT --> | Specialized agents across 12 domains |
 | Workflows | <!-- WORKFLOW_COUNT -->9<!-- /WORKFLOW_COUNT --> | Project commands (discovery, planning, execution, retrospectives) |
-| References | <!-- REFERENCE_COUNT -->365<!-- /REFERENCE_COUNT --> | Deep-dive technical documents loaded on demand |
+| References | <!-- REFERENCE_COUNT -->371<!-- /REFERENCE_COUNT --> | Deep-dive technical documents loaded on demand |
 
 ### Skill categories
 
@@ -129,7 +129,7 @@ Project management commands integrating with Jira and Confluence via [Atlassian 
 
 ```
 opencode-skills/
-  skills/                    # 66 skill directories (SKILL.md + references/)
+  skills/                    # 67 skill directories (SKILL.md + references/)
   .opencode/
     commands/                # 10 workflow commands (OpenCode format)
       common-ground.md

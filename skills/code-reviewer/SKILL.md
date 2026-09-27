@@ -12,7 +12,7 @@ metadata:
   role: specialist
   scope: review
   output-format: report
-  related-skills: architecture-designer, code-documenter, security-reviewer, test-master, the-fool
+  related-skills: security-reviewer, test-master, architecture-designer
 ---
 
 # Code Reviewer
@@ -118,3 +118,5 @@ Code review report must include:
 ## Knowledge Reference
 
 SOLID, DRY, KISS, YAGNI, design patterns, OWASP Top 10, language idioms, testing patterns
+
+[Documentation](https://jeffallan.github.io/claude-skills/skills/quality/code-reviewer/)

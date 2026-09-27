@@ -38,9 +38,9 @@ Load detailed guidance based on context:
 | Testing | `references/testing-patterns.md` | Vitest, component testing, mocking |
 
 **For shared Vue concepts, defer to vue-expert:**
-- `vue-expert/references/composition-api.md` - Core reactivity patterns
-- `vue-expert/references/components.md` - Props, emits, slots
-- `vue-expert/references/state-management.md` - Pinia stores
+- `../vue-expert/references/composition-api.md` - Core reactivity patterns
+- `../vue-expert/references/components.md` - Props, emits, slots
+- `../vue-expert/references/state-management.md` - Pinia stores
 
 ## Code Patterns
 
@@ -166,3 +166,5 @@ When implementing Vue features in JavaScript:
 ## Knowledge Reference
 
 Vue 3 Composition API, JSDoc, ESM modules, Pinia, Vue Router 4, Vite, VueUse, Vitest, Vue Test Utils, JavaScript ES2022+
+
+[Documentation](https://jeffallan.github.io/claude-skills/skills/frontend/vue-expert-js/)

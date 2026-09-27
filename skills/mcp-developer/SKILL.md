@@ -11,7 +11,7 @@ metadata:
   role: specialist
   scope: implementation
   output-format: code
-  related-skills: atlassian-mcp, devops-engineer, fastapi-expert, security-reviewer, typescript-pro
+  related-skills: fastapi-expert, typescript-pro, security-reviewer, devops-engineer
 ---
 
 # MCP Developer
@@ -142,3 +142,5 @@ When implementing MCP features, provide:
 2. Schema definitions (tools, resources, prompts)
 3. Configuration file (transport, auth, etc.)
 4. Brief explanation of design decisions
+
+[Documentation](https://jeffallan.github.io/claude-skills/skills/api-architecture/mcp-developer/)

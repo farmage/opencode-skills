@@ -11,7 +11,7 @@ metadata:
   role: specialist
   scope: implementation
   output-format: code
-  related-skills: devops-engineer, fastapi-expert, ml-pipeline, pandas-pro, rag-architect, spark-engineer
+  related-skills: fastapi-expert, devops-engineer
 ---
 
 # Python Pro
@@ -176,3 +176,5 @@ When implementing Python features, provide:
 ## Knowledge Reference
 
 Python 3.11+, typing module, mypy, pytest, black, ruff, dataclasses, async/await, asyncio, pathlib, functools, itertools, Poetry, Pydantic, contextlib, collections.abc, Protocol
+
+[Documentation](https://jeffallan.github.io/claude-skills/skills/language/python-pro/)

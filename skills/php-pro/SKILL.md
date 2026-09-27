@@ -11,7 +11,7 @@ metadata:
   role: specialist
   scope: implementation
   output-format: code
-  related-skills: fastapi-expert, fullstack-guardian, wordpress-pro
+  related-skills: fullstack-guardian, fastapi-expert
 ---
 
 # PHP Pro
@@ -205,3 +205,5 @@ When implementing a feature, deliver in this order:
 ## Knowledge Reference
 
 PHP 8.3+, Laravel 11, Symfony 7, Composer, PHPStan, Psalm, PHPUnit, Pest, Eloquent ORM, Doctrine, PSR standards, Swoole, ReactPHP, Redis, MySQL/PostgreSQL, REST/GraphQL APIs
+
+[Documentation](https://jeffallan.github.io/claude-skills/skills/language/php-pro/)

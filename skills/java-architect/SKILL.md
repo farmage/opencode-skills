@@ -11,7 +11,7 @@ metadata:
   role: architect
   scope: implementation
   output-format: code
-  related-skills: api-designer, database-optimizer, devops-engineer, fullstack-guardian, salesforce-developer, spring-boot-engineer
+  related-skills: fullstack-guardian, api-designer, devops-engineer, database-optimizer
 ---
 
 # Java Architect
@@ -131,3 +131,5 @@ public class SecurityConfig {
 ## Knowledge Reference
 
 Spring Boot 3.x, Java 21, Spring WebFlux, Project Reactor, Spring Data JPA, Spring Security, OAuth2/JWT, Hibernate, R2DBC, Spring Cloud, Resilience4j, Micrometer, JUnit 5, TestContainers, Mockito, Maven/Gradle
+
+[Documentation](https://jeffallan.github.io/claude-skills/skills/language/java-architect/)

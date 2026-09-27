@@ -11,7 +11,7 @@ metadata:
   role: specialist
   scope: implementation
   output-format: code
-  related-skills: fullstack-guardian, react-native-expert, swift-expert, test-master
+  related-skills: react-native-expert, test-master, fullstack-guardian
 ---
 
 # Flutter Expert
@@ -137,3 +137,5 @@ When implementing Flutter features, provide:
 2. Provider/Bloc definitions
 3. Route configuration if needed
 4. Test file structure
+
+[Documentation](https://jeffallan.github.io/claude-skills/skills/frontend/flutter-expert/)

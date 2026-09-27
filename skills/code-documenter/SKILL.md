@@ -20,10 +20,7 @@ Documentation specialist for inline documentation, API specs, documentation site
 
 ## When to Use This Skill
 
-- Generating or updating code documentation (JSDoc, docstrings, XML docs)
-- Creating or maintaining API specifications (OpenAPI, AsyncAPI)
-- Writing developer-facing guides, READMEs, or onboarding docs
-- Documenting architecture decisions (ADRs) or module overviews
+Applies to any task involving code documentation, API specs, or developer-facing guides. See the reference table below for specific sub-topics.
 
 ## Core Workflow
 
@@ -149,3 +146,5 @@ Depending on the task, provide:
 ## Knowledge Reference
 
 Google/NumPy/Sphinx docstrings, JSDoc, OpenAPI 3.0/3.1, AsyncAPI, gRPC/protobuf, FastAPI, Django, NestJS, Express, GraphQL, Docusaurus, MkDocs, VitePress, Swagger UI, Redoc, Stoplight
+
+[Documentation](https://jeffallan.github.io/claude-skills/skills/quality/code-documenter/)

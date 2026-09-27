@@ -5,13 +5,13 @@ license: MIT
 compatibility: opencode
 metadata:
   author: https://github.com/Jeffallan
-  version: "1.1.0"
+  version: "1.1.1"
   domain: api-architecture
   triggers: architecture, system design, design pattern, microservices, scalability, ADR, technical design, infrastructure
   role: expert
   scope: design
   output-format: document
-  related-skills: fullstack-guardian, devops-engineer, secure-code-guardian
+  related-skills: fullstack-guardian, devops-engineer, secure-code-guardian, microservices-architect, code-reviewer
 ---
 
 # Architecture Designer
@@ -116,3 +116,4 @@ Use PostgreSQL as the primary datastore for the Order Service.
 Consistency and query flexibility are prioritised over unlimited horizontal write scalability.
 ```
 
+[Documentation](https://jeffallan.github.io/claude-skills/skills/api-architecture/architecture-designer/)

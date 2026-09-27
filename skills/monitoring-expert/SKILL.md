@@ -11,7 +11,7 @@ metadata:
   role: specialist
   scope: implementation
   output-format: code
-  related-skills: architecture-designer, cloud-architect, debugging-wizard, devops-engineer, microservices-architect, rag-architect, websocket-engineer
+  related-skills: devops-engineer, debugging-wizard, architecture-designer
 ---
 
 # Monitoring Expert
@@ -175,3 +175,5 @@ Load detailed guidance based on context:
 - Alert on every error (alert fatigue)
 - Use string interpolation in logs (use structured fields)
 - Skip correlation IDs in distributed systems
+
+[Documentation](https://jeffallan.github.io/claude-skills/skills/devops/monitoring-expert/)
