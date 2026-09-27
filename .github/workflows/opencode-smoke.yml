@@ -62,9 +62,9 @@ jobs:
           COUNT="$(echo "$RESPONSE" | jq '.data | length')"
           test "$COUNT" -eq 67
 
-          echo "$RESPONSE" | jq -e '.data[] | select(.id == "django-storages-s3")' >/dev/null
-          echo "$RESPONSE" | jq -e '.data[] | select(.id == "prompt-engineer")' >/dev/null
-          echo "$RESPONSE" | jq -e '.data[] | select(.id == "csharp-developer")' >/dev/null
+          echo "$RESPONSE" | jq -e '.data[] | select(.name == "django-storages-s3")' >/dev/null
+          echo "$RESPONSE" | jq -e '.data[] | select(.name == "prompt-engineer")' >/dev/null
+          echo "$RESPONSE" | jq -e '.data[] | select(.name == "csharp-developer")' >/dev/null
 
       - name: Show server log on failure
         if: failure()

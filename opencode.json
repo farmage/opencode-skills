@@ -14,5 +14,8 @@
       "template": "Execute the Common Ground workflow.\n\nArguments: $ARGUMENTS\n\nSurface and validate hidden assumptions about the project for user confirmation.\nSee .opencode/commands/common-ground.md for full instructions.",
       "description": "Surface and validate hidden assumptions about the project"
     }
-  }
+  },
+  "skills": [
+    ".opencode/skills"
+  ]
 }

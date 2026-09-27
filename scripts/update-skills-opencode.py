@@ -31,7 +31,7 @@ def update_skill(skill_dir: str, skill_name: str, dry_run: bool = False) -> list
         issues.append(f"  ERROR: {skill_name} - no SKILL.md found")
         return issues
 
-    with open(skill_md, "r") as f:
+    with open(skill_md) as f:
         content = f.read()
 
     fm_text, body = parse_frontmatter(content)

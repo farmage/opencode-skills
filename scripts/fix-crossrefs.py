@@ -61,7 +61,7 @@ def main():
 
         all_skills.add(skill_name)
 
-        with open(skill_md, "r") as f:
+        with open(skill_md) as f:
             content = f.read()
 
         fm_text, _ = parse_frontmatter(content)
@@ -92,7 +92,7 @@ def main():
             continue
 
         skill_md = os.path.join(SKILLS_DIR, skill_name, "SKILL.md")
-        with open(skill_md, "r") as f:
+        with open(skill_md) as f:
             content = f.read()
 
         fm_text, body = parse_frontmatter(content)
