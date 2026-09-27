@@ -33,9 +33,24 @@ jobs:
           test "$(find .opencode/skills -name SKILL.md -type f | wc -l)" -eq 67
           test -f .opencode/skills/django-storages-s3/SKILL.md
 
+      - name: Add minimal control skill
+        run: |
+          mkdir -p .opencode/skills/ci-smoke
+          cat > .opencode/skills/ci-smoke/SKILL.md <<'EOF'
+          ---
+          name: ci-smoke
+          description: Minimal CI control skill
+          compatibility: opencode
+          ---
+
+          # CI Smoke
+          This skill verifies OpenCode local skill discovery.
+          EOF
+
       - name: Start OpenCode server
         env:
           OPENCODE_SERVER_PASSWORD: ci-smoke-password
+          OPENCODE_LOG_LEVEL: DEBUG
         run: |
           opencode serve --hostname 127.0.0.1 --port 4096 > /tmp/opencode.log 2>&1 &
           for i in {1..30}; do
@@ -66,11 +81,14 @@ jobs:
             http://127.0.0.1:4096/api/skill | tee /tmp/skills.json | jq .
 
           COUNT="$(jq '.data | length' /tmp/skills.json)"
-          test "$COUNT" -eq 67
+          test "$COUNT" -eq 68
           jq -e '.data[] | select(.id == "django-storages-s3")' /tmp/skills.json >/dev/null
           jq -e '.data[] | select(.id == "prompt-engineer")' /tmp/skills.json >/dev/null
           jq -e '.data[] | select(.id == "csharp-developer")' /tmp/skills.json >/dev/null
+          jq -e '.data[] | select(.id == "ci-smoke")' /tmp/skills.json >/dev/null
 
       - name: Show server log on failure
         if: failure()
-        run: cat /tmp/opencode.log || true
+        run: |
+          cat /tmp/opencode.log || true
+          find "$HOME/.local/share/opencode" -type f -path '*/log/*' -print -exec tail -n 300 {} \; 2>/dev/null || true
