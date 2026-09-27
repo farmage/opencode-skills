@@ -1,8 +1,8 @@
-# Claude Skills Roadmap
+# OpenCode Skills Roadmap
 
 ## Current Status
 
-**Version:** v<!-- VERSION -->0.5.0<!-- /VERSION --> (Released January 2026)
+**Version:** v<!-- VERSION -->0.5.0<!-- /VERSION --> (Released September 27, 2026)
 
 - **<!-- SKILL_COUNT -->67<!-- /SKILL_COUNT --> Skills** across 12 domains
 - **<!-- REFERENCE_COUNT -->371<!-- /REFERENCE_COUNT --> Reference Files** with progressive disclosure architecture
@@ -16,9 +16,9 @@
 ## Development Timeline
 
 ```
-v0.4.2 ──────> v0.5.0 ──────> v0.6.0 ──────> v0.7.0 ──────> v1.0.0
-(Current)      Workflow       Local-First    Skill          Stable
-               Overhaul       Config         Routing        Release
+v0.4.x ──────> v0.5.0 ──────> v0.6.0 ──────> v0.7.0 ──────> v1.0.0
+Upstream       (Current)      Local-First    Skill          Stable
+baseline       OpenCode       Config         Routing        Release
 ```
 
 ---
@@ -39,40 +39,29 @@ Introduced 9 project workflow commands spanning discovery, planning, execution, 
 
 ---
 
-## v0.5.0 - Workflow Overhaul
+## v0.5.0 - OpenCode Release & Upstream Sync (Released)
 
-**Scope:** Decouple workflow commands from Jira/Confluence, add per-project backend configuration, create a project intake phase, rework discovery for product-centric workflows, integrate feature-forge into the pipeline.
+**Released:** September 27, 2026
 
-See [`docs/v0.5.0-plan.md`](docs/v0.5.0-plan.md) for the consolidated implementation plan.
+This release establishes the current OpenCode-native baseline of the fork and syncs the skill catalog with upstream through v0.4.16.
 
-### Backend Adapter Pattern
-- [#62](https://github.com/Jeffallan/claude-skills/issues/62): Generalize workflow commands for multiple ticketing and documentation systems
-- [#119](https://github.com/Jeffallan/claude-skills/issues/119): Backend adapter reference files (9 reference files for local, Jira, GitHub Issues, Confluence, GitHub Wiki backends)
-- Per-project config via `.claude/workflow-config.json` — ticketing (`local` | `jira` | `github-issues`) and documentation (`local` | `confluence` | `github-wiki`)
+### Release Status
+- 67 OpenCode-compatible skills
+- 371 reference files
+- 9 project workflow commands
+- All skills mirrored under `.opencode/skills`
+- Explicit OpenCode skill discovery configured in `opencode.json`
+- GitHub CI and OpenCode runtime smoke test passing
 
-### Intake Commands (New Phase)
-- [#120](https://github.com/Jeffallan/claude-skills/issues/120): Three new commands — `intake:document-codebase`, `intake:capture-behavior`, `intake:create-system-description`
-- Generates living system documentation, characterization tests, and SOC2-style system description
+### Upstream Sync
+- Added `django-storages-s3`
+- Preserved `compatibility: opencode` across the complete catalog
+- Kept Claude-specific repository structure and plugin metadata out of the fork
+- Upstream versions are tracked independently from the fork's `0.5.0` release version
 
-### Discovery Rework
-- [#121](https://github.com/Jeffallan/claude-skills/issues/121): Full rewrite — topic-based input (not Jira epic key), local-first sources, produces epics AND tickets
-- [#103](https://github.com/Jeffallan/claude-skills/issues/103): Epic creation gap fix — discovery now creates epics, not just tickets
+### Runtime Verification
+OpenCode v2.0.18 was installed on a clean GitHub-hosted Ubuntu runner and verified through its runtime API. After startup initialization, OpenCode registered all 67 project skills successfully.
 
-### Feature-Forge Integration
-- [#122](https://github.com/Jeffallan/claude-skills/issues/122): System description context (Step 0), discovery recommendation ("Needs additional discovery" standing option), output boundaries (optional EARS), skill-aware ticket generation
-
-### Namespace & Directory Restructure
-- [#123](https://github.com/Jeffallan/claude-skills/issues/123): Drop `project:` prefix — `project:phase:action` becomes `phase:action`; flatten `commands/project/` to `commands/`; remove `complete-sprint` command
-
-### Already Completed (Phase 1-2)
-- [#124](https://github.com/Jeffallan/claude-skills/issues/124): YAML workflow definition schema + DAG manifest
-- [#125](https://github.com/Jeffallan/claude-skills/issues/125): Narrative document restructure with per-command metadata
-
-### Infrastructure
-- [#126](https://github.com/Jeffallan/claude-skills/issues/126): CI portability check — GitHub Action asserting `npx skills` detection matches `version.json`
-
-### Command Count: 11
-- 3 new (intake), 7 reworked (backend-agnostic), 1 removed (complete-sprint)
 
 ---
 

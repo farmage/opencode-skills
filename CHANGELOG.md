@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-09-27
+
+### Added
+- Added `django-storages-s3`, bringing the OpenCode pack to 67 skills.
+- Added a GitHub Actions runtime smoke test that installs OpenCode and verifies project skill discovery through the OpenCode API.
+
+### Changed
+- Synced skill content and reference material from `Jeffallan/claude-skills` through upstream v0.4.16 while preserving the OpenCode-native fork structure.
+- Preserved `compatibility: opencode` across all 67 skills and mirrored the complete skill tree under `.opencode/skills`.
+- Added explicit `skills: [".opencode/skills"]` project configuration for deterministic OpenCode discovery.
+- Updated project metadata to 67 skills, 9 workflows, and 371 reference files.
+- Kept the fork release version at `0.5.0`; upstream version numbers are tracked separately.
+
+### Verified
+- GitHub CI passes on the release commit.
+- OpenCode v2.0.18 successfully discovers and registers all 67 project skills at runtime.
+- Runtime verification includes `django-storages-s3`, `prompt-engineer`, and `csharp-developer`.
+
 ## [0.4.10] - 2026-03-06
 
 ### Changed
