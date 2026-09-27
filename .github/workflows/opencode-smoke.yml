@@ -47,35 +47,29 @@ jobs:
           cat /tmp/opencode.log
           exit 1
 
-      - name: Verify OpenCode advertises all skills
+      - name: Verify OpenCode discovers all skills
         env:
           OPENCODE_SERVER_PASSWORD: ci-smoke-password
         run: |
-          PROVIDERS="$(curl -fsS -u opencode:ci-smoke-password http://127.0.0.1:4096/provider)"
-          echo "$PROVIDERS" | jq '{connected, providerCount: (.all | length)}'
+          LOCATION_ARGS=(--get --data-urlencode "location[directory]=$GITHUB_WORKSPACE")
 
-          PROVIDER="$(echo "$PROVIDERS" | jq -r '.all[] | select((.models | length) > 0) | .id' | head -1)"
-          MODEL="$(echo "$PROVIDERS" | jq -r --arg p "$PROVIDER" '.all[] | select(.id == $p) | .models | keys[0]')"
-          test -n "$PROVIDER"
-          test -n "$MODEL"
+          echo "Resolved location:"
+          curl -fsS -u opencode:ci-smoke-password "${LOCATION_ARGS[@]}" \
+            http://127.0.0.1:4096/api/location | tee /tmp/location.json | jq .
 
-          TOOLS="$(curl -fsS -u opencode:ci-smoke-password \
-            --get \
-            --data-urlencode "provider=$PROVIDER" \
-            --data-urlencode "model=$MODEL" \
-            http://127.0.0.1:4096/experimental/tool)"
+          echo "Discovered config entries:"
+          curl -fsS -u opencode:ci-smoke-password "${LOCATION_ARGS[@]}" \
+            http://127.0.0.1:4096/api/config | tee /tmp/config.json | jq .
 
-          SKILL_DESC="$(echo "$TOOLS" | jq -r '.. | objects | select(.id? == "skill") | .description? // empty' | head -1)"
-          test -n "$SKILL_DESC"
+          echo "Discovered skills:"
+          curl -fsS -u opencode:ci-smoke-password "${LOCATION_ARGS[@]}" \
+            http://127.0.0.1:4096/api/skill | tee /tmp/skills.json | jq .
 
-          printf '%s\n' "$SKILL_DESC" > /tmp/skill-description.txt
-          cat /tmp/skill-description.txt
-
-          COUNT="$(grep -c '<skill>' /tmp/skill-description.txt || true)"
+          COUNT="$(jq '.data | length' /tmp/skills.json)"
           test "$COUNT" -eq 67
-          grep -q '<name>django-storages-s3</name>' /tmp/skill-description.txt
-          grep -q '<name>prompt-engineer</name>' /tmp/skill-description.txt
-          grep -q '<name>csharp-developer</name>' /tmp/skill-description.txt
+          jq -e '.data[] | select(.id == "django-storages-s3")' /tmp/skills.json >/dev/null
+          jq -e '.data[] | select(.id == "prompt-engineer")' /tmp/skills.json >/dev/null
+          jq -e '.data[] | select(.id == "csharp-developer")' /tmp/skills.json >/dev/null
 
       - name: Show server log on failure
         if: failure()
